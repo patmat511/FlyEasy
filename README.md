@@ -21,3 +21,9 @@
    ```bash
    git clone https://github.com/patmat511/FlyEasy.git
    cd FlyEasy
+1. **Open the project in Visual Studio**
+2. **Set up MongoDB**
+   - Make sure MongoDB is installed and running
+   - Update the connection string in `appsettings.json` if needed
+3. **Run the application**
+   - Build and run the project from Visual Studio
