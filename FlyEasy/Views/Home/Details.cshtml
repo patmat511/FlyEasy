@@ -1,0 +1,66 @@
+﻿@model FlyEasy.Models.Flight
+@{
+    ViewData["Title"] = "Szczegóły lotu";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fa fa-plane"></i> Szczegóły lotu</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Numer lotu</dt>
+                <dd class="col-sm-9">@Model.FlightNumber</dd>
+                <dt class="col-sm-3">Miejsce wylotu</dt>
+                <dd class="col-sm-9">@Model.Departure</dd>
+                <dt class="col-sm-3">Destynacja</dt>
+                <dd class="col-sm-9">@Model.Destination</dd>
+                <dt class="col-sm-3">Czas odlotu</dt>
+                <dd class="col-sm-9">@Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</dd>
+            </dl>
+
+            <hr />
+            <h6><i class="fa fa-users"></i> Pasażerowie</h6>
+            @if (Model.Passengers.Any())
+            {
+                <ul class="list-group mb-3">
+                    @foreach (var p in Model.Passengers)
+                    {
+                        <li class="list-group-item">@p.Name – @p.SeatNumber (Paszport: @p.PassportNumber)</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>Brak pasażerów.</p>
+            }
+
+            <h6><i class="fa fa-suitcase"></i> Bagaż</h6>
+            @if (Model.Luggage.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var l in Model.Luggage)
+                    {
+                        <li class="list-group-item">ID: @l.LuggageId, Waga: @l.Weight kg, Typ: @l.Type</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>Brak bagażu.</p>
+            }
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">
+                <i class="fa fa-edit"></i> Edytuj
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger me-2">
+                <i class="fa fa-trash"></i> Usuń
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fa fa-arrow-left"></i> Powrót
+            </a>
+        </div>
+    </div>
+</div>
