@@ -1,0 +1,35 @@
+﻿@model FlyEasy.Models.Flight
+@{
+    ViewData["Title"] = "Usuń lot";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0"><i class="fa fa-exclamation-triangle"></i> Czy na pewno usunąć ten lot?</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Numer lotu</dt>
+                <dd class="col-sm-9">@Model.FlightNumber</dd>
+                <dt class="col-sm-3">Wylot</dt>
+                <dd class="col-sm-9">@Model.Departure</dd>
+                <dt class="col-sm-3">Destynacja</dt>
+                <dd class="col-sm-9">@Model.Destination</dd>
+                <dt class="col-sm-3">Czas odlotu</dt>
+                <dd class="col-sm-9">@Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <form asp-action="Delete" method="post" class="d-inline">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-trash"></i> Usuń
+                </button>
+            </form>
+            <a asp-action="Index" class="btn btn-secondary ms-2">
+                <i class="fa fa-arrow-left"></i> Anuluj
+            </a>
+        </div>
+    </div>
+</div>

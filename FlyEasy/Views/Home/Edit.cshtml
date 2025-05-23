@@ -1,0 +1,45 @@
+﻿@model FlyEasy.Models.Flight
+@{
+    ViewData["Title"] = "Edytuj lot";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <div class="card-header bg-warning text-dark">
+            <h5><i class="fa fa-edit"></i> Edytuj lot</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="mb-3">
+                    <label asp-for="FlightNumber" class="form-label">Numer lotu</label>
+                    <input asp-for="FlightNumber" class="form-control" required />
+                    <span asp-validation-for="FlightNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Departure" class="form-label">Wylot</label>
+                    <input asp-for="Departure" class="form-control" required />
+                    <span asp-validation-for="Departure" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Destination" class="form-label">Destynacja</label>
+                    <input asp-for="Destination" class="form-control" required />
+                    <span asp-validation-for="Destination" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DepartureTime" class="form-label">Czas odlotu</label>
+                    <input asp-for="DepartureTime" type="datetime-local" class="form-control" value="@Model.DepartureTime.ToString("yyyy-MM-ddTHH:mm")" />
+                    <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fa fa-save"></i> Zapisz
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">
+                        <i class="fa fa-times"></i> Anuluj
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
